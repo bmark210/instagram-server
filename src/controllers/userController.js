@@ -104,17 +104,15 @@ export const updateAvatar = async (req, res) => {
   const avatarData = req.body.avatar;
 
   try {
-    if (avatarData) {
-      const updatedUser = await UserModel.findByIdAndUpdate(
-        userId,
-        { avatar: avatarData ? avatarData : null },
-        { new: true }
-      );
-      res.json({
-        msg: "success",
-        user: updatedUser,
-      });
-    }
+    const updatedUser = await UserModel.findByIdAndUpdate(
+      userId,
+      { avatar: avatarData ? avatarData : null },
+      { new: true }
+    );
+    res.json({
+      msg: "success",
+      user: updatedUser,
+    });
   } catch (error) {
     console.log(error);
     res.json({
